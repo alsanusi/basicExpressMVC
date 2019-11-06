@@ -1,0 +1,64 @@
+<!-- Include Header -->
+<%- include layout/indexHeader.ejs %>
+
+<!-- Showing Employee Data List -->
+<div class="container">
+    <div class="table-wrapper">
+        <div class="center">
+            <img src="/img/employee.png" height="300" width="330" class="center">
+        </div>
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Manage <b>Employees</b></h2>
+                </div>
+                <div class="col-sm-6">
+                    <a href="/input" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
+                        <span>Add New Employee</span></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Edit Data</th>
+                    <th>Delete Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Showing all the EmployeeData List -->
+                <% if(data){ %>
+                <% data.forEach(function(employee){ %>
+                <tr>
+                    <td><%= employee.name %></td>
+                    <td><%= employee.email %></td>
+                    <td><%= employee.address %></td>
+                    <td><%= employee.phone %></td>
+                    <td>
+                        <a href="/edit/<%= employee.id %>"><button class="btn btn-primary notika-btn-primary">Edit Data</button></a>
+                    </td>
+                    <td>
+                        <form action="/delete/<%= employee.id %>" method="POST">
+                            <form method="post" action="/delete/<%= employee.id %>">
+                                <button type="submit" name="delete" value='Delete'
+                                    onClick="return confirm('Are you sure you want to delete this alumni data?')"
+                                    class="btn btn-primary notika-btn-primary" style="background-color:#d82436;">Remove
+                                    Data</button>
+                                <input type="hidden" name="_method" value="DELETE" />
+                            </form>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Include Footer -->
+<%- include layout/indexFooter.ejs %>
