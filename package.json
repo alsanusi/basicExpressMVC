@@ -9,7 +9,15 @@
   "author": "Alkautsars",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "nodemon": "^1.19.4"
+    "express-flash": "0.0.2",
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.16.1",
+    "express-validator": "^6.2.0",
+    "method-override": "^3.0.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.4",
+    "promise-mysql": "^4.1.1"
   }
 }
